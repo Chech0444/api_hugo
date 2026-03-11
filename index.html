@@ -1,0 +1,80 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Biblioteca interactiva</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <main class="app">
+      <header>
+        <h1>Biblioteca interactiva</h1>
+        <p>Conecta tu API, explora libros y filtra resultados en tiempo real.</p>
+      </header>
+
+      <section class="panel panel--grid">
+        <label>
+          URL base de la API
+          <input id="baseUrl" type="url" placeholder="https://tu-api.com" />
+        </label>
+        <label>
+          Endpoint de libros
+          <input id="booksEndpoint" type="text" value="/books" />
+        </label>
+        <label>
+          API key
+          <input id="apiKey" type="text" value="J5Djv2zVfqdDOSvx5Iu1NGfYrJpPotQ0A2eQK6FhyDSlZ7nY" />
+        </label>
+        <label>
+          API secret
+          <input
+            id="apiSecret"
+            type="password"
+            value="lPSsmjBPF1nwt57Z6NEUwoaXwNVhaYCHHNmHihnhIpqUKjSUXJiR2OgqBa7i31fT"
+          />
+        </label>
+      </section>
+
+      <section class="panel actions">
+        <button id="connectBtn" class="btn btn--primary">Conectar y cargar libros</button>
+        <button id="toggleSecretBtn" class="btn">Mostrar/Ocultar secret</button>
+        <button id="clearBtn" class="btn">Limpiar resultados</button>
+      </section>
+
+      <section class="panel panel--grid">
+        <label>
+          Buscar libro
+          <input id="searchInput" type="search" placeholder="Título, autor o categoría" />
+        </label>
+        <label>
+          Ordenar por
+          <select id="sortSelect">
+            <option value="title-asc">Título (A-Z)</option>
+            <option value="title-desc">Título (Z-A)</option>
+            <option value="author-asc">Autor (A-Z)</option>
+            <option value="year-desc">Año (más nuevo)</option>
+            <option value="year-asc">Año (más antiguo)</option>
+          </select>
+        </label>
+      </section>
+
+      <section class="panel status-panel">
+        <p id="status" class="status">Esperando conexión...</p>
+      </section>
+
+      <section id="booksGrid" class="books-grid" aria-live="polite"></section>
+    </main>
+
+    <template id="bookCardTemplate">
+      <article class="book-card">
+        <h3 class="book-card__title"></h3>
+        <p class="book-card__author"></p>
+        <p class="book-card__meta"></p>
+        <p class="book-card__desc"></p>
+      </article>
+    </template>
+
+    <script src="app.js" defer></script>
+  </body>
+</html>
